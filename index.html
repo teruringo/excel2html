@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Excelデータをhtmlに変換します</title>
+	<link rel="stylesheet" type="text/css" href="content/style.css">
+	<link rel="stylesheet" type="text/css" href="content/normalize.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<h1>エクセルデータをhtmlに変換します</h1>
+<h2>入力欄</h2>
+<div><textarea name="tsvInput" class="tsvInput"></textarea></div>
+<div class="btnConvert"><input type="button" name="btnConvert" value="htmlに変換する" onclick="btnClick()"></div>
+<h2>出力欄</h2>
+<div><textarea name="htmlOutput" class="htmlOutput"></textarea></div>
+</div>
+</body>
+<script type="text/javascript"><!--
+//ボタンクリック
+function btnClick(){
+	//配列に入れる
+	var inputText = $("textarea[name='tsvInput']").val();
+	tableArrayRow = inputText.split("\n");
+	// $("textarea[name='htmlOutput']").val(tableArr[0]);
+	var text = "<table>\n"
+	for(i=0; i<tableArrayRow.length-1; i++){
+		tableArrayCol = tableArrayRow[i].split("\t");
+		text = text + "\t<tr>";
+		for (j = 0; j < tableArrayCol.length; j++) {
+			text = text + "<td>"+tableArrayCol[j]+"</td>"
+		};
+		text = text + "</tr>\n"
+	}
+	text = text + "</table>"
+	//配列を出力
+	// var text = "<table>";
+	// for (i=0; i<tableArr.length; i++) {
+	// 	var text = text + tableArr[i] + "うんこ";
+	// };
+	$("textarea[name='htmlOutput']").val(text);
+}
+
+// 上に入力されているテキストを下に出力する関数
+function btnConvert(){
+	var inputText = $("textarea[name='tsvInput']").val();
+	$("textarea[name='htmlOutput']").val(inputText);
+}
+--></script>
+</html>
