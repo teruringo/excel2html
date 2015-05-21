@@ -35,17 +35,7 @@ function btnClick(){
 	}
 	text = text + "</table>"
 	//配列を出力
-	// var text = "<table>";
-	// for (i=0; i<tableArr.length; i++) {
-	// 	var text = text + tableArr[i] + "うんこ";
-	// };
 	$("textarea[name='htmlOutput']").val(text);
 }
 
-// 上に入力されているテキストを下に出力する関数
-function btnConvert(){
-	var inputText = $("textarea[name='tsvInput']").val();
-	$("textarea[name='htmlOutput']").val(inputText);
-}
---></script>
 </html>
