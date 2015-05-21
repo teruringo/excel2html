@@ -6,12 +6,13 @@
 	<link rel="stylesheet" type="text/css" href="content/style.css">
 	<link rel="stylesheet" type="text/css" href="content/normalize.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--	<script src="js/tabIndent.js"></script> -->
 </head>
 <body>
 <div class="wrapper">
 <h1>エクセルデータをhtmlに変換します</h1>
 <h2>入力欄</h2>
-<div><textarea name="tsvInput" class="tsvInput"></textarea></div>
+<div><textarea name="tsvInput" class="tsvInput tabIndent" id="tsvInput"></textarea></div>
 <div class="btnConvert"><input type="button" name="btnConvert" value="htmlに変換する" onclick="btnClick()"></div>
 <h2>出力欄</h2>
 <div><textarea name="htmlOutput" class="htmlOutput"></textarea></div>
@@ -23,9 +24,8 @@ function btnClick(){
 	//配列に入れる
 	var inputText = $("textarea[name='tsvInput']").val();
 	tableArrayRow = inputText.split("\n");
-	// $("textarea[name='htmlOutput']").val(tableArr[0]);
 	var text = "<table>\n"
-	for(i=0; i<tableArrayRow.length-1; i++){
+	for(i=0; i<tableArrayRow.length; i++){
 		tableArrayCol = tableArrayRow[i].split("\t");
 		text = text + "\t<tr>";
 		for (j = 0; j < tableArrayCol.length; j++) {
@@ -38,4 +38,9 @@ function btnClick(){
 	$("textarea[name='htmlOutput']").val(text);
 }
 
+// //タブインデント入力設定
+// var el = document.getELementById('#tsvInput');
+// tabIndent.render(el);
+
+--></script>
 </html>
