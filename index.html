@@ -13,9 +13,9 @@
 <h1>エクセルデータをhtmlに変換します</h1>
 <h2>入力欄</h2>
 <form>
-<input type="checkbox">
-<div><textarea name="tsvInput" class="tsvInput tabIndent" id="tsvInput"></textarea></div>
-<div class="btnConvert"><input type="button" name="btnConvert" value="htmlに変換する" onclick="btnClick()"></div>
+	<input type="checkbox">
+	<div><textarea name="tsvInput" class="tsvInput tabIndent" id="tsvInput"></textarea></div>
+	<div class="btnConvert"><input type="button" name="btnConvert" value="htmlに変換する" onclick="btnClick()"></div>
 </form>
 <h2>出力欄</h2>
 <div><textarea name="htmlOutput" class="htmlOutput"></textarea></div>
@@ -26,9 +26,17 @@
 function btnClick(){
 	//配列に入れる
 	var inputText = $("textarea[name='tsvInput']").val();
+	//分ける
 	tableArrayRow = inputText.split("\n");
+
+	// 繰り返す
 	var text = "<table>\n"
 	for(i=0; i<tableArrayRow.length; i++){
+
+		// 最後が改行だけだったら抜ける処理（最後が改行なしでも消えないように対応）
+		if (i==tableArrayRow.length-1 && tableArrayRow[i]=="") {break};
+
+		// 行を分割していく／タグに入力していく
 		tableArrayCol = tableArrayRow[i].split("\t");
 		text = text + "\t<tr>";
 		for (j = 0; j < tableArrayCol.length; j++) {
