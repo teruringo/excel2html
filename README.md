@@ -6,7 +6,7 @@ Excelのセルをコピーして、貼り付けると、HTMLに変換します�
 
 #今後実装したいもの
 1. いろんな設定欄を作って、いろんなテーブルタグ出力したい
-1.1. rowspan colspanに対応
-1.1. thead thに対応
+	1. rowspan colspanに対応
+	1. thead thに対応
 1. ulタグ出力したい
 1. dlタグ出力したい
