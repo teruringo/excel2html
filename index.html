@@ -36,7 +36,7 @@ function btnClick(){
 	}
 
 	//配列を統合
-	var text = "<table>\n"
+	var text = "<table>\n";
 	for (var i = 0; i < tableArray.length; i++) {
 
 		// 最後が改行だけだったら抜ける処理（最後が改行なしでも消えないように対応）
@@ -48,7 +48,7 @@ function btnClick(){
 		};
 		text = text + "</tr>\n"
 	};
-	text = text + "</table>"
+	text = text + "</table>";
 
 	//配列を出力
 	$("textarea[name='htmlOutput']").val(text);
