@@ -27,24 +27,29 @@ function btnClick(){
 	//配列に入れる
 	var inputText = $("textarea[name='tsvInput']").val();
 	//分ける
-	tableArrayRow = inputText.split("\n");
+	tableArray = inputText.split("\n");
 
 	// 繰り返す
+	for(i=0; i<tableArray.length; i++){
+		// 行を分割していく／タグに入力していく
+		tableArray[i] = tableArray[i].split("\t");
+	}
+
+	//配列を統合
 	var text = "<table>\n"
-	for(i=0; i<tableArrayRow.length; i++){
+	for (var i = 0; i < tableArray.length; i++) {
 
 		// 最後が改行だけだったら抜ける処理（最後が改行なしでも消えないように対応）
-		if (i==tableArrayRow.length-1 && tableArrayRow[i]=="") {break};
+		if (i==tableArray.length-1 && tableArray[i]=="") {break};
 
-		// 行を分割していく／タグに入力していく
-		tableArrayCol = tableArrayRow[i].split("\t");
 		text = text + "\t<tr>";
-		for (j = 0; j < tableArrayCol.length; j++) {
-			text = text + "<td>"+tableArrayCol[j]+"</td>"
+		for (j = 0; j < tableArray[i].length; j++) {
+			text = text + "<td>"+tableArray[i][j]+"</td>"
 		};
 		text = text + "</tr>\n"
-	}
+	};
 	text = text + "</table>"
+
 	//配列を出力
 	$("textarea[name='htmlOutput']").val(text);
 }
